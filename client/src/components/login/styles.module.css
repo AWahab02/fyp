@@ -1,4 +1,33 @@
-.login_container {
+.desktop {
+	background-color: #ffffff;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 100%;
+  }
+  
+  .desktop .div {
+	background-color: #ffffff;
+	height: 1024px;
+	width: 1440px;
+  }
+
+  .image {
+	height: 1026px;
+	width: 555px;
+  }
+  
+  .image .miranjani {
+	height: 1026px;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 555px;
+  }
+  
+
+
+/* .login_container {
 	width: 100%;
 	min-height: 100vh;
 	background-color: #f5f5f5;
@@ -95,4 +124,4 @@
 	background-color: #3bb19b;
 	color: white;
 	margin: 10px;
-}
+} */
