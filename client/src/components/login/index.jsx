@@ -29,45 +29,34 @@ const Login = () => {
 		}
 	};
 
+
 	return (
-		<div className={styles.login_container}>
-			<div className={styles.login_form_container}>
-				<div className={styles.left}>
-					<form className={styles.form_container} onSubmit={handleSubmit}>
-						<h1>Login to Your Account</h1>
-						<input
-							type="email"
-							placeholder="Email"
-							name="email"
-							onChange={handleChange}
-							value={data.email}
-							required
-							className={styles.input}
-						/>
-						<input
-							type="password"
-							placeholder="Password"
-							name="password"
-							onChange={handleChange}
-							value={data.password}
-							required
-							className={styles.input}
-						/>
+		<div>
+			<div className={styles.container}>
+				<div className={styles.leftContainer}>
+					{/* Content for the left container */}
+				</div>
+
+				<div className={styles.rightContainer}>
+					<div className={styles.topRightContainer}>
+						<img src={require('./book2life_logo.png')} alt="" />
+					</div>
+					<form className={styles.loginPanel} onSubmit={handleSubmit}>
+						<h2>login!</h2>
+						<div className={styles.inputGroup1}>
+							<input type="email" name="email" placeholder="Username" onChange={handleChange} value={data.email} required />
+						</div>
+						<br />
+						<div className={styles.inputGroup}>
+							{/* <img src={require('./keyIcon.png')} alt="Lock Icon" className={styles.icon} /> */}
+							<input type="password" name="password" placeholder="Password" onChange={handleChange} value={data.password} required />
+						</div>
 						{error && <div className={styles.error_msg}>{error}</div>}
-						<button type="submit" className={styles.green_btn}>
-							Sign In
-						</button>
+						<button type="submit" className={styles.signInButton}>enter!</button>
 					</form>
 				</div>
-				<div className={styles.right}>
-					<h1>New Here ?</h1>
-					<Link to="/signup">
-						<button type="button" className={styles.white_btn}>
-							Sign Up
-						</button>
-					</Link>
-				</div>
 			</div>
+			{/* Other content */}
 		</div>
 	);
 };

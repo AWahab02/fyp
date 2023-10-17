@@ -23,9 +23,7 @@ router.post("/", async (req, res) => {
 		{
 			return res.status(401).send({ message: "Invalid Password" });
 		}
-
-
-		// console.log(user.password);
+		console.log(user.password);
 
 		// if (validPassword)
 		// 	return res.status(401).send({ message: "Invalid Password" });
