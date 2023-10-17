@@ -1,73 +1,262 @@
-.signup_container {
+.login_container {
 	width: 100%;
-	min-height: 100vh;
+	min-height: 100%;
 	background-color: #f5f5f5;
 	display: flex;
+	background-repeat: no-repeat;
 	align-items: center;
 	justify-content: center;
 }
 
-.signup_form_container {
-	width: 900px;
-	height: 500px;
+
+
+.container {
+	width: 100%;
+	height: 100vh;
+	background-size: 100% 100%;
+	background-image: url('texture_1.png');
+	display: flex;
+	background-repeat: no-repeat;
+
+  }
+  
+  /* Define a CSS class for the left container */
+  .leftContainer {
+	background-image: url('texture_1.png');
+	background-size: 100% 100%;
+	flex: 1;
+	z-index: 3; /* Set a higher z-index for the left container */
+	padding: 20px;
+	background-repeat: no-repeat;
+  }
+
+.login_form_container {
+	width: 90%;
+	height: 900px;
 	display: flex;
 	border-radius: 10px;
 	box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
 		0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
 }
 
-.left {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background-color: #3bb19b;
-	border-top-left-radius: 10px;
-	border-bottom-left-radius: 10px;
-}
-
-.left h1 {
-	margin-top: 0;
-	color: white;
-	font-size: 35px;
-	align-self: center;
-}
-
-.right {
-	flex: 2;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background-color: white;
-	border-top-right-radius: 10px;
-	border-bottom-right-radius: 10px;
-}
 
 .form_container {
-	display: flex;
-	flex-direction: column;
 	align-items: center;
 }
 
-.form_container h1 {
-	font-size: 40px;
-	margin-top: 0;
+.signUpPanel {
+	width: 45%;
+	height: 65%;
+	background: linear-gradient(209deg, rgba(218, 223, 160, 0.30) 0%, rgba(223, 222, 160, 0.30) 54%, rgba(250, 195, 198, 0.30) 100%);
+	border-radius: 20px;
+	display: flex;
+	box-shadow: 4px 5px 13px 4px rgba(0, 0, 0, 0.10);
+	margin-top: 6%;
+	margin-left: 25%;
+	flex-direction: row; /* Change from "column" to "row" */
+	justify-content: space-between; /* Align the columns to the left and right */
+	align-items: center;
+	text-align: center;
+	padding: 20px;
+	backdrop-filter: blur(15px);
+  }
+  .leftColumn {
+	width: 50%; /* Adjust the width as needed */
+	padding: 20px;
+	margin-bottom: 15%;
+	margin-left: 5%;
+  }
+  
+  /* Style for right column (adjust width as needed) */
+  .rightColumn {
+	width: 50%; /* Adjust the width as needed */
+	padding: 20px;
+  }
+  .topLeftContainer {
+  position: absolute;
+  left: 0;
+  padding: 2% 1.5% 0 2%;
+  opacity: 6=80%;
+  /* Add other styles for the container as needed */
 }
+  h2 {
+	font-family: Gopher, sans-serif;
+	font-weight: 700;
+	text-align: left;
+	font-size: 78px;
+	word-wrap: break-word;
+	color: #8DCB39;
+  }
 
-.input {
-	outline: none;
+  h3 {
+	font-family: Gopher, sans-serif;
+	text-align: left;
+	font-weight: 500;
+	font-size: 42px;
+	word-wrap: break-word;
+	color: #8DCB39;
+  }
+  
+  .inputGroup {
+	font-family: Gopher, sans-serif;
+	display: flex;
+	position: relative;
+	align-items: center;
+	margin: 10px 0;	
+	width: 90%;	
+  }
+
+  .inputGroup1 {
+	font-family: Gopher, sans-serif;
+	display: flex;
+	position: relative;
+	align-items: center;
+	margin: 10px 0;	
+	width: 90%;	
+  }
+
+  .inputGroup1 input{
+	padding-left: 20%; 
+	padding-top: 5%;
+	padding-bottom: 5%;
+  }
+
+  .inputGroup1::before {
+	content: "";
+	background: url('userIcon.png') no-repeat;
+	background-size: 32px; /* Adjust the size of the icon */
+	position: absolute;
+	left: 5%; /* Adjust the position of the icon within the input field */
+	top: 32%; /* Vertically center the icon */
+	transform: translateY(-30%); /* Vertically center the icon */
+	width: 30px; /* Adjust the width of the icon */
+	height: 30px; /* Adjust the height of the icon */
+  }
+
+  .inputGroup2 {
+	font-family: Gopher, sans-serif;
+	display: flex;
+	position: relative;
+	align-items: center;
+	margin: 10px 0;	
+	width: 90%;	
+  }
+
+  .inputGroup2 input{
+	padding-left: 20%; 
+	padding-top: 5%;
+	padding-bottom: 5%;
+  }
+
+  .inputGroup2::before {
+	content: "";
+	background: url('keyIcon.png') no-repeat;
+	background-size: 32px; /* Adjust the size of the icon */
+	position: absolute;
+	left: 5%; /* Adjust the position of the icon within the input field */
+	top: 32%; /* Vertically center the icon */
+	transform: translateY(-30%); /* Vertically center the icon */
+	width: 30px; /* Adjust the width of the icon */
+	height: 30px; /* Adjust the height of the icon */
+  }
+
+  .inputGroup3 {
+	font-family: Gopher, sans-serif;
+	display: flex;
+	position: relative;
+	align-items: center;
+	margin: 10px 0;	
+	width: 90%;	
+  }
+
+  .inputGroup3 input{
+	padding-left: 20%; 
+	padding-top: 5%;
+	padding-bottom: 5%;
+  }
+
+  .inputGroup3::before {
+	content: "";
+	background: url('mailbox.png') no-repeat;
+	background-size: 32px; /* Adjust the size of the icon */
+	position: absolute;
+	left: 5%; /* Adjust the position of the icon within the input field */
+	top: 32%; /* Vertically center the icon */
+	transform: translateY(-30%); /* Vertically center the icon */
+	width: 30px; /* Adjust the width of the icon */
+	height: 30px; /* Adjust the height of the icon */
+  }
+
+
+  .inputGroup input{
+	padding-left: 20%; 
+  }
+
+  .inputGroup::before {
+	content: "";
+	background: url('keyIcon.png') no-repeat;
+	background-size: 32px; /* Adjust the size of the icon */
+	position: absolute;
+	left: 5%; /* Adjust the position of the icon within the input field */
+	top: 32%; /* Vertically center the icon */
+	transform: translateY(-30%); /* Vertically center the icon */
+	width: 30px; /* Adjust the width of the icon */
+	height: 30px; /* Adjust the height of the icon */
+  }
+  
+  input {
+	color: rgba(254, 115, 130, 0.80);
+	font-size: 30px;
+	font-family: Gopher;
+	width: 100%;
+	height: 90%;
+	padding: 10%;
+	margin-bottom: 5%;
+	border: 0px solid #ccc;
+	border-radius: 50px;
+  }
+  input::placeholder{
+	color: rgba(254, 115, 130, 0.80);
+	font-size: 18px;
+	font-family: Gopher;
+	font-weight: 500;
+	word-wrap: break-word
+  }
+  button.signUpButton {
+	font-family: Gopher, sans-serif;
+	margin-bottom: 0;
+	background-color: #8DCB39;
+	width: 40%;
+	height: 100%;
+	color: white;
+	font-size: 24px;
 	border: none;
-	width: 370px;
-	padding: 15px;
-	border-radius: 10px;
-	background-color: #edf5f3;
-	margin: 5px 0;
-	font-size: 14px;
-}
-
-.error_msg {
+	border-radius: 30px;
+	padding: 15px 0px;
+	cursor: pointer;
+  }
+  button.signInButton {
+	font-family: Gopher, sans-serif;
+	margin-top: 8%;
+	margin-bottom: 0;
+	background-color: #8DCB39;
+	width: 40%;
+	height: 10%;
+	color: white;
+	font-size: 24px;
+	border: none;
+	border-radius: 30px;
+	padding: 10px 20px;
+	cursor: pointer;
+  }
+  .icon {
+	display: inline-block; /* Set to inline or inline-block */
+	vertical-align: middle; /* Vertically align with text */
+	margin-right: 10px; /* Add margin for spacing */
+	width: 20px; /* Adjust the width as needed */
+	height: 20px; /* Adjust the height as needed */
+  }
+  .error_msg {
 	width: 370px;
 	padding: 15px;
 	margin: 5px 0;
@@ -78,21 +267,16 @@
 	text-align: center;
 }
 
-.white_btn,
-.green_btn {
-	border: none;
-	outline: none;
-	padding: 12px 0;
-	background-color: white;
-	border-radius: 20px;
-	width: 180px;
-	font-weight: bold;
-	font-size: 14px;
-	cursor: pointer;
-}
 
-.green_btn {
-	background-color: #3bb19b;
-	color: white;
-	margin: 10px;
+p{
+	color: rgba(254, 115, 130, 0.80);
+	font-size: 30px;
+	font-family: Gopher;
+	font-weight: 500;
+	word-wrap: break-word
+  }
+
+@font-face {
+	font-family: Gopher;
+	src: url(../login/Gopher-Regular.ttf);
 }

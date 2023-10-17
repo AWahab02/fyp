@@ -29,7 +29,6 @@ const Login = () => {
 		}
 	};
 
-
 	return (
 		<div>
 			<div className={styles.container}>
@@ -53,6 +52,11 @@ const Login = () => {
 						</div>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.signInButton}>enter!</button>
+						<p className="">don't have an account?</p>
+						<Link to="/signup">
+							<button type="button" className={styles.signUpButton}>signup!</button>
+						</Link>
+						<br/>
 					</form>
 				</div>
 			</div>
