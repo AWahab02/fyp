@@ -5,9 +5,10 @@ import styles from "./styles.module.css";
 
 const Signup = () => {
 	const [data, setData] = useState({
-		firstName: "",
-		lastName: "",
+		// firstName: "",
+		// lastName: "",
 		email: "",
+		username: "",
 		password: "",
 	});
 	const [error, setError] = useState("");
@@ -35,63 +36,38 @@ const Signup = () => {
 		}
 	};
 
+
+
 	return (
-		<div className={styles.signup_container}>
-			<div className={styles.signup_form_container}>
-				<div className={styles.left}>
-					<h1>Welcome Back</h1>
-					<Link to="/login">
-						<button type="button" className={styles.white_btn}>
-							Sign in
-						</button>
-					</Link>
-				</div>
-				<div className={styles.right}>
-					<form className={styles.form_container} onSubmit={handleSubmit}>
-						<h1>Create Account</h1>
-						<input
-							type="text"
-							placeholder="First Name"
-							name="firstName"
-							onChange={handleChange}
-							value={data.firstName}
-							required
-							className={styles.input}
-						/>
-						<input
-							type="text"
-							placeholder="Last Name"
-							name="lastName"
-							onChange={handleChange}
-							value={data.lastName}
-							required
-							className={styles.input}
-						/>
-						<input
-							type="email"
-							placeholder="Email"
-							name="email"
-							onChange={handleChange}
-							value={data.email}
-							required
-							className={styles.input}
-						/>
-						<input
-							type="password"
-							placeholder="Password"
-							name="password"
-							onChange={handleChange}
-							value={data.password}
-							required
-							className={styles.input}
-						/>
-						{error && <div className={styles.error_msg}>{error}</div>}
-						<button type="submit" className={styles.green_btn}>
-							Sign Up
-						</button>
-					</form>
-				</div>
+		<div className={styles.container}>
+			<div className={styles.topLeftContainer}>
+				<img src={require('./book2life_logo.png')} alt="" />
 			</div>
+
+			<form className={styles.signUpPanel} onSubmit={handleSubmit}>
+				{/* Left Column */}
+				<div className={styles.leftColumn}>
+						<h2>signup!</h2>
+						<h3>create an {<br />} account today {<br />}- for free!</h3>
+				</div>
+
+				{/* Right Column */}
+				<div className={styles.rightColumn}>
+					<div className={styles.inputGroup3}>
+						<input type="email" name="email" placeholder="e-mail" onChange={handleChange} value={data.email} required />
+					</div>
+					<div className={styles.inputGroup1}>
+						<input type="text" name="username" placeholder="username" onChange={handleChange} value={data.username} required />
+					</div>
+					<div className={styles.inputGroup2}>
+						<input type="password" name="password" placeholder="password" onChange={handleChange} value={data.password} required />
+					</div>
+
+					{error && <div className={styles.error_msg}>{error}</div>}
+						<button type="submit" className={styles.signUpButton}>signup!</button>
+				</div>
+
+			</form>
 		</div>
 	);
 };
