@@ -1,0 +1,166 @@
+/* styles.css */
+
+  .water-colors{
+    position: relative;
+    min-width: 100%;
+    min-height: 88vh;
+ 
+  }
+.texture{
+    position: absolute;
+    top:0;
+    width:100%;
+    min-height: 88vh;
+    z-index: -1;
+}
+
+.book{
+    position: absolute;
+    left:50%;
+    height:500px;
+    z-index:1;
+}
+.left-page{
+    position: absolute;
+    left:59%;
+    z-index:2;
+    top: 20%;
+}
+.arrow-left{
+    position: absolute;
+    left:55%;
+    z-index:2;
+    top: 30%;
+    height:250px;
+}
+.book-btn{
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+.next-step-btn{
+    cursor: pointer;
+}
+  .next-step-shape{
+    position: absolute;
+    left:76.5%;
+    z-index:2;
+    top: 63%;
+    background-color: #8DCB39;
+    height: 32px;
+    width: 120px;
+    opacity: 0.8;
+    border-radius: 15px;
+    display: flex;
+
+    
+}
+.next-btn-text{
+    margin: 0;
+    padding-left: 18%;
+    padding-top: 6%;
+    font-family: 'Gopher', sans-serif;
+    color: #FFF;
+    font-size: 15px;
+}
+  
+.book-square-shape{
+    position: absolute;
+    left:59.5%;
+    z-index:2;
+    top: 63%;
+    background-color: #e9505f;
+    height: 32px;
+    width: 160px;
+    opacity: 0.8;
+    border-radius: 15px;
+    display: flex;
+}
+.book-btn-text{
+    margin: 0;
+    padding-left: 15%;
+    padding-top: 5%;
+    font-family: 'Gopher', sans-serif;
+    color: #FFF;
+    font-size: 15px;
+}
+.book-btn-line{
+    margin-left: 21px;
+    color: #FFF;
+    opacity: 0.4;
+}
+.book-btn-cross{
+padding:7%;    
+margin-left: 5px;
+color: #FFF;
+    height: 10px;
+}
+.upload, .from, .device{
+    font-family: 'Gopher', sans-serif;
+    margin:0px;
+    color: #f55666;
+    opacity:0.8;
+}
+.right-page{
+    position: absolute;
+    left:76%;
+    z-index:2;
+    top: 20%;
+}
+.tell-us, .about-your, .bookk{
+    font-family: 'Gopher', sans-serif;
+    margin:0px;
+    color: #f55666;
+    opacity:0.8;
+}
+.illustrate-your-book{
+    position: absolute;
+    font-family: 'Gopher', sans-serif;
+    font-size: 40px; /* Adjust font size as needed */
+    color: #8DCB39;
+    top:30%;
+    left:15%;
+    z-index: 1;
+
+}
+.span-illustrate{
+    color: #FE7382;
+}
+.illustrate-heading {
+    margin: 0; /* Remove the margin to reduce vertical space */
+    
+  }
+  
+  .span-illustrate {
+    color: #FE7382;
+    opacity: 0.8;
+  }
+  .watercolor-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 40%;
+    height: 200px;
+    opacity: 0.6;
+  }
+  
+  .watercolor-left {
+    position: absolute;
+    left: 0;
+    top:0;
+    height: 230px;
+    opacity: 0.6;
+  }
+  
+  .watercolor-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    float: right;
+    height: 300px;
+    opacity: 0.6;
+  }
+
+  
+  
+  
+  
+  
+  
