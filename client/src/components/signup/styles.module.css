@@ -12,12 +12,12 @@
 
 .container {
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	background-size: 100% 100%;
 	background-image: url('texture_1.png');
 	display: flex;
 	background-repeat: no-repeat;
-
+	transform: scale(1.06);
   }
   
   /* Define a CSS class for the left container */
@@ -45,20 +45,21 @@
 }
 
 .signUpPanel {
-	width: 45%;
+	width: 55%;
 	height: 65%;
 	background: linear-gradient(209deg, rgba(218, 223, 160, 0.30) 0%, rgba(223, 222, 160, 0.30) 54%, rgba(250, 195, 198, 0.30) 100%);
 	border-radius: 20px;
 	display: flex;
 	box-shadow: 4px 5px 13px 4px rgba(0, 0, 0, 0.10);
-	margin-top: 6%;
-	margin-left: 25%;
+	margin-top: 4%;
+	margin-left: 22%;
 	flex-direction: row; /* Change from "column" to "row" */
 	justify-content: space-between; /* Align the columns to the left and right */
 	align-items: center;
 	text-align: center;
 	padding: 20px;
 	backdrop-filter: blur(15px);
+	transform: scale(0.80);
   }
   .leftColumn {
 	width: 50%; /* Adjust the width as needed */
@@ -75,8 +76,8 @@
   .topLeftContainer {
   position: absolute;
   left: 0;
-  padding: 2% 1.5% 0 2%;
-  opacity: 6=80%;
+  padding: 4% 6% 0 6%;
+  opacity: 80%;
   /* Add other styles for the container as needed */
 }
   h2 {

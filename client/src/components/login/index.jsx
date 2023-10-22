@@ -16,8 +16,8 @@ const Login = () => {
 		try {
 			const url = "http://localhost:8080/api/auth";
 			const { data: res } = await axios.post(url, data);
-			localStorage.setItem("token", res.data);
-			window.location = "/";
+			localStorage.setItem("token", data.email);
+			window.location = "/upload";
 		} catch (error) {
 			if (
 				error.response &&
@@ -47,12 +47,11 @@ const Login = () => {
 						</div>
 						<br />
 						<div className={styles.inputGroup}>
-							{/* <img src={require('./keyIcon.png')} alt="Lock Icon" className={styles.icon} /> */}
 							<input type="password" name="password" placeholder="Password" onChange={handleChange} value={data.password} required />
 						</div>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.signInButton}>enter!</button>
-						<p className="">don't have an account?</p>
+						<p className="" >don't have an account?</p>
 						<Link to="/signup">
 							<button type="button" className={styles.signUpButton}>signup!</button>
 						</Link>

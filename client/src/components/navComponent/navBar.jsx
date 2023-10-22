@@ -3,9 +3,14 @@ import NavBarImage from "./navbar-image.png"; // Replace with the path to your i
 import HomeImg from "./home.png"; // Replace with the path to your image file
 import PenImg from "./pen.png"; // Replace with the path to your image file
 import ProfileImg from "./profile.png"; // Replace with the path to your image file
+import { Link } from "react-router-dom";
 import "./styles.css"; // Import the CSS file with your styles
 
 const NavBar = () => {
+  const handleLogout = () => {
+		localStorage.removeItem("token");
+	};
+  
   return (
     <div className="navbar">
       <div className="logo">
@@ -17,13 +22,20 @@ const NavBar = () => {
       </div>
       <ul className="navList">
         <li className="navItem">
-          <img src={HomeImg} alt="Home Icon" />
+          <Link to="/upload" className="navItem">
+            <img src={PenImg} alt="Profile Icon" />
+          </Link>
         </li>
         <li className="navItem">
-          <img src={PenImg} alt="NavBar Icon" />
+          <Link to="/profile" className="navItem">
+            <img src={ProfileImg} alt="Profile Icon" />
+          </Link>
         </li>
+
         <li className="navItem">
-          <img src={ProfileImg} alt="Profile Icon" />
+          <Link to="/" className="navItem" onClick={handleLogout}>
+            <img src={HomeImg} alt="Profile Icon" />
+          </Link>
         </li>
       </ul>
     </div>
