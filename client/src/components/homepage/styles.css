@@ -1,0 +1,142 @@
+.one-image {
+    width: 90%; 
+    margin-left: 8%;
+    margin-top: 5%;
+  }
+
+
+.example {
+    width: 35%; 
+    margin-left: 10%;
+    margin-top: 2%;
+  }
+.three-image {
+    width: 80%; 
+    margin-left: 10%;
+    margin-top: 5%;
+  }
+
+.carousel-image{
+    width: 80%; 
+    margin-left: 20%;
+    margin-top: -7%;
+}
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .carousel-button {
+    cursor: pointer;
+    position: absolute;
+    width: 70px; /* Adjust the width as needed */
+    height: 70px; /* Adjust the height as needed */
+    margin-left: 370px; 
+    margin-bottom: 150px;
+  }
+
+  .carousel-button1 {
+    cursor: pointer;
+    position: absolute;
+    width: 70px; /* Adjust the width as needed */
+    height: 70px; /* Adjust the height as needed */
+    margin-left: 1380px; /* No margin between the buttons and the carousel image */
+    margin-bottom: 150px;
+
+  }
+
+  .dots {
+    height: 30px;
+    position: absolute;
+    margin-left: 800px;
+    margin-top: 550px;
+    width: 210px;
+}
+
+.dots .ellipse-colored {
+    background-color: #9b454e;
+    border-radius: 15px;
+    height: 20px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
+}
+
+.dots .ellipse {
+    background-color: #fe7382cc;
+    border-radius: 15px;
+    height: 20px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
+}
+
+.dots .div {
+    background-color: #fe7382cc;
+    border-radius: 15px;
+    height: 20px;
+    left: 60px;
+    position: absolute;
+    top: 0;
+    width: 20px;
+}
+
+.dots .div-colored {
+    background-color: #9b454e;
+    border-radius: 15px;
+    height: 20px;
+    left: 60px;
+    position: absolute;
+    top: 0;
+    width: 20px;
+}
+
+
+.dots .ellipse-2 {
+    background-color: #fe7382cc;
+    border-radius: 15px;
+    height: 20px;
+    left: 120px;
+    position: absolute;
+    top: 0;
+    width: 20px;
+}
+
+.dots .ellipse-2-colored {
+    background-color: #9b454e;
+    border-radius: 15px;
+    height: 20px;
+    left: 120px;
+    position: absolute;
+    top: 0;
+    width: 20px;
+}
+
+
+.dots .ellipse-3 {
+    background-color: #fe7382cc;
+    border-radius: 15px;
+    height: 20px;
+    left: 180px;
+    position: absolute;
+    top: 0;
+    width: 20px;
+}
+
+.dots .ellipse-3-colored {
+    background-color: #9b454e;
+    border-radius: 15px;
+    height: 20px;
+    left: 180px;
+    position: absolute;
+    top: 0;
+    width: 20px;
+}
+
+.navbar {
+    background-color: white;
+  }
+  

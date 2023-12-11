@@ -33,7 +33,7 @@ const NavBar = () => {
         </li>
 
         <li className="navItem">
-          <Link to="/" className="navItem" onClick={handleLogout}>
+          <Link to="/homepage" className="navItem" onClick={handleLogout}>
             <img src={HomeImg} alt="Profile Icon" />
           </Link>
         </li>

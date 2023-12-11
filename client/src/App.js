@@ -5,6 +5,8 @@ import Login from "./components/login";
 import Upload from "./components/upload/Upload";
 import GetFiles from "./components/getfiles/GetFiles";
 import UserProfile from "./components/profile/profile";
+import HomePage from "./components/homepage/homepage";
+import Library from "./components/library/library";
 
 function App() {
 	const user = localStorage.getItem("token");
@@ -18,6 +20,9 @@ function App() {
 			<Route path="/upload" exact element={<Upload />} />
 			<Route path="/get-files" exact element={<GetFiles />} />
 			<Route path="/profile" exact element={<UserProfile />} />
+			<Route path="/homepage" exact element={<HomePage />} />
+			<Route path="/library" exact element={<Library />} />
+
 		</Routes>
 	);
 }

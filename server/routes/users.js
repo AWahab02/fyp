@@ -64,4 +64,28 @@ router.put('/profile', async (req, res) => {
   }
 });
 
+
+router.put('/addBook', async (req, res) => {
+  try {
+    const { email, newBook } = req.body;
+
+    const user = await User.findOne({ email: email });
+
+    if (!user) {
+      return res.status(404).send({ message: 'User not found' });
+    }
+
+    // Add the new book to the user's library_books array
+    user.library_books.push(newBook);
+
+    await user.save();
+
+    // Send a success response
+    res.status(200).send({ message: 'Book added to the library successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ message: 'Internal Server Error' });
+  }
+});
+
 module.exports = router;

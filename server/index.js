@@ -17,8 +17,16 @@ const fs = require('fs');
 const sch = new Schema({
     username: String,
     email: String,
-    password: String
-}, {versionKey: false})
+    password: String,
+    library_books: [
+        {
+            title: String,
+            author: String,
+            pages: String,
+        }
+    ],
+}, { versionKey: false });
+
 
 
 const mongoosemodel = mongoose.model("users", sch)
