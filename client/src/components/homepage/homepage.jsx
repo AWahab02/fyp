@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 import NavBar from '../navComponent/navBar';
 import BgImage from './homepage_bg.png';
@@ -12,13 +12,52 @@ import Carousel2 from './ex2.png';
 import Carousel3 from './ex3.png';
 import Carousel4 from './ex4.png';
 import Left from './left.png';
+import axios from "axios";
 import Right from './right.png';
+
+const userEmail = localStorage.getItem("token");
+console.log("Token from localStorage:", userEmail);
 
 
 const HomePage = () => {
   const images = [Carousel1, Carousel2, Carousel3, Carousel4];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const fileInputRef = useRef(null);
+  const [selectedFileName, setSelectedFileName] = useState("");
+  const [bookData, setBookData] = useState({
+    title: "",
+    author: "",
+    file: null,
+    email: userEmail,
+  });
 
+  const [userProfile, setUserProfile] = useState({
+    username: 'awzahid12',
+    email: 'awzahid',
+    password: 'awzahid',
+    library_books: [],
+  });
+
+  useEffect(() => {
+    const api = axios.create({
+      baseURL: 'http://localhost:8080',
+    });
+
+    api.get('/api/users/profile', {
+      params: {
+        email: userEmail,
+      }
+    })
+    .then((response) => {
+      const userData = response.data;
+      console.log(userData)
+      setUserProfile(userData);
+    })
+    .catch((error) => {
+      console.error('Error fetching user data:', error);
+    });
+  }, [])
   const containerStyle = {
     marginTop: '50px', // Added margin to the top
   };
@@ -59,7 +98,7 @@ const HomePage = () => {
           <Dots />
         </div>
         <img src={Three} className='three-image' />
-        <Link to="/upload">
+        <Link to="/library">
           <img src={Four} className='three-image' />
         </Link>
       </div>

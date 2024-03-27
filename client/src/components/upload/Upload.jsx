@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import NavBar from "../navComponent/navBar";
 import watercolorBottom from "./watercolorBottom.png"; // Replace with the path to your image file
 import watercolorLeft from "./watercolorLeft.png"; // Replace with the path to your image file
@@ -14,9 +14,6 @@ import axios from "axios";
 const userEmail = localStorage.getItem("token");
 console.log("Token from localStorage:", userEmail);
 
-
-
-
 const Upload = () => {
 
   const fileInputRef = useRef(null);
@@ -24,9 +21,79 @@ const Upload = () => {
   const [bookData, setBookData] = useState({
     title: "",
     author: "",
-    file: null,
+    fileName: "",
     email: userEmail,
+    artStyle: "",
   });
+
+
+
+  const [userProfile, setUserProfile] = useState({
+    username: 'awzahid12',
+    email: 'awzahid',
+    password: 'awzahid',
+    library_books: [],
+  });
+
+  useEffect(() => {
+    const api = axios.create({
+      baseURL: 'http://localhost:8080',
+    });
+
+    api.get('/api/users/profile', {
+      params: {
+        email: userEmail,
+      }
+    })
+      .then((response) => {
+        const userData = response.data;
+        console.log(userData)
+        setUserProfile(userData);
+      })
+      .catch((error) => {
+        console.error('Error fetching user data:', error);
+      });
+  }, [])
+
+  const handleAddBook = (bookData) => {
+    const title = bookData.title;
+    const author = bookData.author;
+    const filename = bookData.fileName;
+
+    console.log("BTW HERE IS THE FILE NAME IN handleAddBook()");
+    console.log(filename);
+    if (title && author && filename) {
+      const newBook = { title, author, filename }; // Include file name in newBook object
+      setUserProfile(prevProfile => ({
+        ...prevProfile,
+        library_books: [...prevProfile.library_books, newBook],
+      }));
+
+      // Update the user's library_books in the MongoDB collection
+      const api = axios.create({
+        baseURL: 'http://localhost:8080',
+      });
+
+      api.put('/api/users/addBook', {
+        email: userEmail,
+        newBook, // Send newBook object containing file name
+      })
+        .then((response) => {
+          console.log('Book added successfully:', response.data);
+        })
+        .catch((error) => {
+          console.error('Error adding book:', error);
+        });
+    }
+  };
+
+  const handleArtStyleChange = (e) => {
+    setBookData({
+      ...bookData,
+      artStyle: e.target.value, // Update selected art style
+    });
+  };
+
 
   const handleTitleChange = (e) => {
     setBookData({
@@ -72,6 +139,7 @@ const Upload = () => {
       setBookData({
         ...bookData,
         file: selectedFile,
+        fileName: fileName
       });
 
       console.log(`Selected file: ${fileName}`);
@@ -79,15 +147,13 @@ const Upload = () => {
   };
 
   const handleNextStepClick = async (e) => {
-
-
     e.preventDefault();
 
     try {
       const url = "http://localhost:8080/api/upload";
       const response = await axios.post(url, bookData, {
         headers: {
-          'Content-Type': 'multipart/form-data', 
+          'Content-Type': 'multipart/form-data',
         },
       });
       if (response.status >= 200 && response.status < 300) {
@@ -108,7 +174,20 @@ const Upload = () => {
         console.error("An error occurred:", error);
       }
     }
+
+    // Include file name in book data before adding to user profile
+    const updatedBookData = {
+      ...bookData,
+      fileName: bookData.fileName,
+    };
+
+
+    // Update the user's library_books in the MongoDB collection
+    handleAddBook(updatedBookData);
   };
+
+
+
   return (
     <div className="container">
       <NavBar className="navbar" />
@@ -144,6 +223,8 @@ const Upload = () => {
               </div>
             </div>
 
+
+
             <form className="book-info-input">
 
               <div className="next-step-btn" onClick={handleNextStepClick}>
@@ -170,9 +251,25 @@ const Upload = () => {
                   <img src={require('./author.png')} alt="Book Icon" className="imageme" />
                   <input className="inputme" type="text" placeholder="author" value={bookData.author} onChange={handleAuthorChange} />
                 </div>
+
+                <br />
+                <div className="input-container rounded-dropdown">
+                  <img src={require('./author.png')} alt="Book Icon" className="imageme1" />
+                  <select className="inputme rounded-select" value={bookData.artStyle} onChange={handleArtStyleChange} style={{ paddingLeft: '26px' }}>
+                    <option value="" disabled hidden>art style</option>
+                    <option value="realistic">Realistic</option>
+                    <option value="sketch">Sketch</option>
+                    <option value="cartoonish">Cartoonish</option>
+                  </select>
+                </div>
+                <br />
+
               </div>
+
             </div>
+
           </div>
+
         </div>
 
         <img src={texture} alt="texture" className="texture" />
@@ -199,6 +296,7 @@ const Upload = () => {
           onChange={handleFileChange}
         />
       </div>
+
     </div>
   );
 };

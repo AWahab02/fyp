@@ -1,84 +1,133 @@
+// import React, { useState, useEffect } from 'react';
+// import { Link } from "react-router-dom";
+// import axios from 'axios';
+// import Shelf from './shelf.png';
+// import Plus from './plus.png';
+// const userEmail = localStorage.getItem("token");
+
+// const UserBooks = ({ userId }) => {
+//     const [userProfile, setUserProfile] = useState({
+//         username: '',
+//         email: userEmail,
+//         password: '',
+//         library_books: [],
+//     });
+
+//     useEffect(() => {
+//         const api = axios.create({
+//             baseURL: 'http://localhost:8080',
+//         });
+
+//         api.get('/api/users/profile', {
+//             params: {
+//                 email: userEmail,
+//             }
+//         })
+//             .then((response) => {
+//                 const userData = response.data;
+//                 console.log(userData)
+//                 setUserProfile(userData);
+//             })
+//             .catch((error) => {
+//                 console.error('Error fetching user data:', error);
+//             });
+//     }, [])
+
+//     return (
+//         <div>
+//             <h2 style={{ fontSize: '42px', marginLeft: '300px' }}>{userProfile.username}'s library</h2>
+//             <ul style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start', marginLeft: '200px' }}>
+//                 {userProfile.library_books.map((book, index) => (
+//                     <li key={index} style={{ listStyleType: 'none', margin: '50px', textAlign: 'center' }}>
+//                         <a href={`http://localhost:8080/download/${book.title.replace(/ /g, "_")}.pdf`} download>
+//                             <img src={Shelf} alt="Shelf" style={{ width: '200px', height: '200px', marginBottom: '10px' }} />
+//                             <div>
+//                                 <strong>Title:</strong> {book.title} <br />
+//                                 <strong>Author:</strong> {book.author} <br />
+//                             </div>
+//                         </a>
+//                     </li>
+//                 ))}
+//                 <Link to='/upload'>
+//                     <li style={{ listStyleType: 'none', margin: '50px', textAlign: 'center' }}>
+//                         <img src={Plus} alt="Plus" style={{ width: '200px', height: '200px', marginBottom: '10px', cursor: 'pointer' }} />
+//                     </li>
+//                 </Link>
+//             </ul>
+//         </div>
+//     );
+// };
+
+// export default UserBooks;
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import Shelf from './shelf.png';
 import Plus from './plus.png';
+
 const userEmail = localStorage.getItem("token");
 
 const UserBooks = ({ userId }) => {
-  const [userProfile, setUserProfile] = useState({
-    username: 'awzahid12',
-    email: 'awzahid',
-    password: 'awzahid',
-    library_books: [],
-  });
-
-  useEffect(() => {
-    const api = axios.create({
-      baseURL: 'http://localhost:8080',
+    const [userProfile, setUserProfile] = useState({
+        username: '',
+        email: userEmail,
+        password: '',
+        library_books: [],
     });
 
-    api.get('/api/users/profile', {
-      params: {
-        email: userEmail,
-      }
-    })
-    .then((response) => {
-      const userData = response.data;
-      console.log(userData)
-      setUserProfile(userData);
-    })
-    .catch((error) => {
-      console.error('Error fetching user data:', error);
-    });
-  }, [])
+    useEffect(() => {
+        const api = axios.create({
+            baseURL: 'http://localhost:8080',
+        });
 
-  const handleAddBook = () => {
-    const title = prompt("Enter book title:");
-    const author = prompt("Enter book author:");
-    const pages = prompt("Enter number of pages:");
+        api.get('/api/users/profile', {
+            params: {
+                email: userEmail,
+            }
+        })
+        .then((response) => {
+            const userData = response.data;
+            setUserProfile(userData);
+        })
+        .catch((error) => {
+            console.error('Error fetching user data:', error);
+        });
+    }, []);
 
-    if (title && author && pages) {
-      const newBook = { title, author, pages };
-      setUserProfile(prevProfile => ({
-        ...prevProfile,
-        library_books: [...prevProfile.library_books, newBook],
-      }));
+    const handleBookClick = (title, author, filename) => {
+        const matchedBook = userProfile.library_books.find(book => book.title === title && book.author === author);
+        if (matchedBook) {
+            const downloadableTitle = `${title}.pdf`;
+            const downloadUrl = `http://localhost:8080/download/${encodeURIComponent(downloadableTitle)}`;
+            window.open(downloadUrl);
+        } else {
+            console.log("Book not found.");
+        }
+    };
 
-      // Update the user's library_books in the MongoDB collection
-      const api = axios.create({
-        baseURL: 'http://localhost:8080',
-      });
-
-      api.put('/api/users/addBook', {
-        email: userEmail,
-        newBook,
-      })
-      .then((response) => {
-        console.log('Book added successfully:', response.data);
-      })
-      .catch((error) => {
-        console.error('Error adding book:', error);
-      });
-    }
-  };
-
-  return (
-    <ul style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start', marginLeft: '200px' }}>
-      {userProfile.library_books.map((book, index) => (
-        <li key={index} style={{ listStyleType: 'none', margin: '50px', textAlign: 'center' }}>
-          <img src={Shelf} alt="Shelf" style={{ width: '200px', height: '200px', marginBottom: '10px' }} />
-          <div>
-            <strong>Title:</strong> {book.title} <br />
-            <strong>Author:</strong> {book.author} <br />
-            <strong>Pages:</strong> {book.pages}
-          </div>
-        </li>
-      ))}
-      <li style={{ listStyleType: 'none', margin: '50px', textAlign: 'center' }} onClick={handleAddBook}>
-        <img src={Plus} alt="Plus" style={{ width: '200px', height: '200px', marginBottom: '10px', cursor: 'pointer' }} />
-      </li>
-    </ul>
-  );
+    return (
+        <div>
+            <h2 style={{ fontSize: '42px', marginLeft: '300px' }}>{userProfile.username}'s library</h2>
+            <ul style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start', marginLeft: '200px' }}>
+                {userProfile.library_books.map((book, index) => (
+                    <li key={index} style={{ listStyleType: 'none', margin: '50px', textAlign: 'center' }}>
+                        <a href="#" onClick={() => handleBookClick(book.title, book.author, book.filename)}>
+                            <img src={Shelf} alt="Shelf" style={{ width: '200px', height: '200px', marginBottom: '10px' }} />
+                            <div>
+                                <strong>Title:</strong> {book.title} <br />
+                                <strong>Author:</strong> {book.author} <br />
+                            </div>
+                        </a>
+                    </li>
+                ))}
+                <Link to='/upload'>
+                    <li style={{ listStyleType: 'none', margin: '50px', textAlign: 'center' }}>
+                        <img src={Plus} alt="Plus" style={{ width: '200px', height: '200px', marginBottom: '10px', cursor: 'pointer' }} />
+                    </li>
+                </Link>
+            </ul>
+        </div>
+    );
 };
 
 export default UserBooks;
