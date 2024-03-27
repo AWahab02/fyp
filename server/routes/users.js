@@ -6,7 +6,7 @@ const { User, validate } = require("../models/user");
 router.post("/", async (req, res) => {
 
   try {
-
+    console.log("NIDDA")
     console.log(req.body)
     const user = await User.findOne({ email: req.body.email });
     if (user)
@@ -75,6 +75,7 @@ router.put('/addBook', async (req, res) => {
       return res.status(404).send({ message: 'User not found' });
     }
 
+    
     // Add the new book to the user's library_books array
     user.library_books.push(newBook);
 

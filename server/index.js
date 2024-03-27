@@ -22,7 +22,6 @@ const sch = new Schema({
         {
             title: String,
             author: String,
-            pages: String,
         }
     ],
 }, { versionKey: false });

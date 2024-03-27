@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
         {
             title: { type: String, required: false },
             author: { type: String, required: false },
-            pages: { type: String, required: false },
+            filename: {type: String, required: false },
         }
     ],
 });
@@ -39,7 +39,7 @@ const validate = (data) => {
             Joi.object({
                 title: Joi.string(),
                 author: Joi.string(),
-                pages: Joi.string(),
+                filename: Joi.string(),
             })
         ).label("Library Books"),
     });
